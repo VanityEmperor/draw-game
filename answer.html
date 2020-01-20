@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./style.css">
+<script>
+    var pageWidth = window.innerWidth
+    document.write('<style>html{font-size:'+pageWidth/50 + 'px;}</style>')
+</script>
+<style>
+    h1{
+        margin-top: 4px;
+        text-align: center;
+    }
+    .contain{
+        margin-top: 5px;
+        display:flex;
+        justify-content: center;
+    }
+    .contain .expand{
+        border-radius: 5px;
+        margin-left: 8px;
+        border: 1px solid #FFC000;
+        width:113px;
+        display: flex;
+        justify-content: center;
+        align-items: center;;
+    }
+    .question-contain{
+        width:300px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .question-contain .question:first-child{
+        margin-top: 15px;
+        margin-bottom: 12px;
+    }
+    .continue{
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+    .continue a{
+        border-radius:5px;
+        width:90px;
+        height: 32px;
+        background: #5B9BD5;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <h1>正确答案</h1>
+    <div class="answer">
+        <img src="./img/2.jpg" alt="">
+    </div>
+    <div class="contain">
+        <span>
+            <img src="./img/3.png" alt="">
+        </span>
+        <span class="expand">
+            拓展疑问
+        </span>
+    </div>
+    <div class="question-contain">
+        <div class="question">Q1：请你简单描述一下骆驼峰峰的外形。</div>
+        <div class="question">Q2：你知道骆驼的驼峰有什么作用吗？</div>
+    </div>
+    <div class="continue">
+        <a href="./index.html">再一次</a>
+    </div>
+</body>
+</html>

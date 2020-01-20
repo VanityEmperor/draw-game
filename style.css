@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden; }
+
+#draw {
+  display: block;
+  background: white;
+  position: fixed;
+  top: 40px;
+  background: url(img/1.jpg) no-repeat;
+  background-size: 100% 100%;
+  overflow: auto; }
+
+body {
+  overflow: hidden;
+  font-size: 16px; }
+
+#template {
+  width: 48rem;
+  height: 32.6666666667rem; }
+
+.actions {
+  position: fixed;
+  top: -8px;
+  left: 0;
+  padding: 20px; }
+
+.actions svg {
+  width: 1.5em;
+  height: 1.5em;
+  transition: all 0.3s;
+  margin: 0 10px; }
+
+.actions svg.active {
+  fill: red;
+  transform: scale(1.2); }
+
+.time-contain {
+  position: fixed;
+  width: 65px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  background: #5B9BD5;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.submit {
+  margin-top: 40rem;
+  text-align: center;
+  background: orange;
+  width: 100px;
+  height: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto; }
+
+.submit a {
+  text-decoration: none;
+  color: white; }
+
+.answer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; }
+
+.answer img {
+  width: 48rem;
+  height: 32.6666666667rem; }
+
+/*# sourceMappingURL=style.css.map */

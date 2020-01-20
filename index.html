@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="//at.alicdn.com/t/font_478967_6n4o5i5mnff4unmi.js"></script>
+<script>
+  var pageWidth = window.innerWidth
+  document.write('<style>html{font-size:'+pageWidth/50 + 'px;}</style>')
+</script>
+<link rel="stylesheet" href="style.css">
+<body>
+    <canvas id="draw"></canvas>
+    <div class="time-contain"><span id="time">45s</span></div>
+    <div id=actions class="actions">
+        <svg id=pen class="active icon">
+          <use xlink:href="#icon-pen"></use>
+        </svg>
+        <svg id=eraser class="icon">
+          <use xlink:href="#icon-erase"></use>
+        </svg>
+    </div>
+    <div class="submit">
+        <a href="./answer.html">提交</a>
+    </div>
+    <div id="template"></div>
+</body>
+<script>
+//canvas不能直接通过style属性来改变宽高，只能通过js来实现。
+var page = document.getElementById('template');
+var width = page.offsetWidth; //宽度
+var height = page.offsetHeight; //高度
+var pageWidth = window.innerWidth
+//让画板居中
+var left = (pageWidth - width)/2
+draw.style.left = left+'px'
+
+var drawBoard = document.getElementById('draw');
+var context = drawBoard.getContext('2d');
+drawBoard.width = width
+drawBoard.height = height
+
+//监听触屏事件
+listenToUser(drawBoard)
+var eraserEnabled = false
+pen.onclick = function(){
+  eraserEnabled = false
+  pen.classList.add('active')
+  eraser.classList.remove('active')
+}
+eraser.onclick = function(){
+  eraserEnabled = true
+  eraser.classList.add('active')
+  pen.classList.remove('active')
+}
+
+  function drawLine(x1, y1, x2, y2) {
+  context.beginPath();
+  context.moveTo(x1-left, y1-40) // 起点
+  context.lineWidth = 5
+  context.lineTo(x2-left, y2-40) // 终点
+  context.stroke()
+  context.closePath()
+}
+function listenToUser(canvas) {
+var using = false
+var lastPoint = {
+  x: undefined,
+  y: undefined
+}
+canvas.ontouchstart = function(aaa){
+      var x = aaa.touches[0].clientX
+      var y = aaa.touches[0].clientY
+      console.log(x,y)
+      using = true
+      if (eraserEnabled) {
+        context.clearRect(x - 5-left, y - 45, 15, 15)
+      } else {
+        lastPoint = {
+          "x": x,
+          "y": y
+        }
+      }
+    }
+    canvas.ontouchmove = function(aaa){
+      var x = aaa.touches[0].clientX
+      var y = aaa.touches[0].clientY
+
+      if (!using) {return}
+
+      if (eraserEnabled) {
+        context.clearRect(x - 14-left, y - 45, 15, 15)
+      } else {
+        var newPoint = {
+          "x": x,
+          "y": y
+        }
+        drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+        lastPoint = newPoint
+      }
+    }
+    canvas.ontouchend = function(){
+      using = false
+    }
+}
+let currentTime = document.querySelector('#time')
+    let n = 45
+    let id
+    id = setTimeout(function run(){
+      n-=1
+      currentTime.innerText = n+'s'
+      if(n >0){
+        id = setTimeout(run, 1000)
+      }else{
+        window.location.href="answer.html"
+      }
+    }, 1000)
+
+
+</script>
+</html>
